@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/opcion_agregar_lugar" android:enabled="true" android:icon="@drawable/ic_add_lugar" android:title="Agregar lugar turistico"/>
+    <item android:id="@+id/opcion_listado_luga" android:enabled="true" android:icon="@drawable/ic_list_lugar" android:title="Listado"/>
+</menu>

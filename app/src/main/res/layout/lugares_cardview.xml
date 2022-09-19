@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    app:cardUseCompatPadding="true"
+    android:layout_width="match_parent"
+    card_view:cardElevation="3dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:contentPadding="5dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/backgroound_brown"
+            android:id="@+id/img_lugar_foto"/>
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE LUGAR TURISTICO"
+                android:id="@+id/txt_lugar_nombre"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14dp"
+                android:id="@+id/txt_lugar_categoria" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dias de atencion"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:id="@+id/txt_lugar_dias" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Horarios de atencion"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:id="@+id/txt_lugar_horario" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Costo de ingreso"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14dp"
+                android:id="@+id/txt_costo_ingreso" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
