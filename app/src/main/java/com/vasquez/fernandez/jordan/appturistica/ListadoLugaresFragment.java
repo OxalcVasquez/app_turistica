@@ -2,16 +2,19 @@ package com.vasquez.fernandez.jordan.appturistica;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.vasquez.fernandez.jordan.adapter.LugarTuristicoAdapter;
 import com.vasquez.fernandez.jordan.logica.LugarTuristico;
+import com.vasquez.fernandez.jordan.utils.Helper;
 
 
 public class ListadoLugaresFragment extends Fragment {
@@ -57,6 +60,42 @@ public class ListadoLugaresFragment extends Fragment {
         new LugarTuristico().cargarDatos();
         //Enlazar
         adapter.cargarLugares(LugarTuristico.listadoLugaresTuristicos);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case 1:
+                Helper.mensajeConfirmacion(getActivity(),"Desea eliminar el lugar turistico?","SI","NO",new EliminarLugarTask());
+                break;
+            case 2:
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    class EliminarLugarTask implements Runnable{
+
+        @Override
+        public void run() {
+            eliminar();
+        }
+    }
+
+    private void eliminar(){
+        try {
+            LugarTuristico lugarTuristico = new LugarTuristico();
+            int pos = adapter.posItemSeleccionadoRecyclerView;
+            int id = LugarTuristico.listadoLugaresTuristicos.get(pos).getId();
+            lugarTuristico.setId(id);
+            long r = lugarTuristico.eliminar();
+            if (r > 0){
+                listar();
+                Helper.mensajeInformacion(getContext(),"Lugar turistico","Eliminado correctamente");
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }

@@ -127,5 +127,16 @@ public class LugarTuristico extends Conexion {
         return resultado;
     }
 
+    public long eliminar(){
+        long resultado = 0;
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            String idEliminar = String.valueOf(this.getId());
+            resultado = db.delete("lugar_turistico","id = ? ",new String[]{idEliminar});
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return resultado;
+    }
 
 }

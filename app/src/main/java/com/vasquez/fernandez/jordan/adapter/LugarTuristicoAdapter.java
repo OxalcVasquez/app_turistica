@@ -1,6 +1,7 @@
 package com.vasquez.fernandez.jordan.adapter;
 
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class LugarTuristicoAdapter extends  RecyclerView.Adapter<LugarTuristicoA
 
     private Context context; //Permite relacionar el Adaptador con el fragement donde se mostrara el listado
     private ArrayList<LugarTuristico> listadoLugaresAux;
+    public  int posItemSeleccionadoRecyclerView;
 
     public LugarTuristicoAdapter(Context context) {
         this.context = context;
@@ -64,7 +66,7 @@ public class LugarTuristicoAdapter extends  RecyclerView.Adapter<LugarTuristicoA
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, View.OnLongClickListener {
 
         //Declarar los controles del cardview
         CircleImageView imgLugar;
@@ -79,7 +81,26 @@ public class LugarTuristicoAdapter extends  RecyclerView.Adapter<LugarTuristicoA
             txtCosto = itemView.findViewById(R.id.txt_costo_ingreso);
             txtDiasAtencion = itemView.findViewById(R.id.txt_lugar_dias);
             txtHorarios = itemView.findViewById(R.id.txt_lugar_horario);
+
+            itemView.setOnCreateContextMenuListener(this);
+            itemView.setOnLongClickListener(this);
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Opciones");
+            contextMenu.add(0,1,0,"Eliminar");
+            contextMenu.add(0,1,0,"Ver en el mapa");
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            posItemSeleccionadoRecyclerView = getAdapterPosition();
+            return false;
+        }
+
+
+
     }
 
 }

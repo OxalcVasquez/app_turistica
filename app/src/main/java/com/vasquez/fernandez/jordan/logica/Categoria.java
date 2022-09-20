@@ -36,7 +36,7 @@ public class Categoria extends Conexion {
         //Leer los registros de la tabla categoria
         SQLiteDatabase db = this.getReadableDatabase();
         //Definir la consulta SQL
-        String sqlString = "SELECT * FROM CATEGORIA ORDER BY NOMBRE;";
+        String sqlString = "SELECT * FROM CATEGORIA;";
         //Ejecutar consulta SQL
         Cursor cursor = db.rawQuery(sqlString,null);
         //Limpiar la lista donde se almacenara los registros de la tabla ciudad
